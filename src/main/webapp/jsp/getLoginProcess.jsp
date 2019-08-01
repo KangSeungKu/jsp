@@ -1,3 +1,4 @@
+<%@page import="java.util.Enumeration"%>
 <%@page import="java.util.Arrays"%>
 <%@page import="java.util.Set"%>
 <%@page import="java.util.Map"%>
@@ -43,6 +44,16 @@
 	<h2>request.getParameterMap()</h2>
 	<%for(String key : keySet){ %>
 		<%=key %> : <%=Arrays.toString(requestMap.get(key)) %><br>
+	<%} %>
+	
+	<%
+		Enumeration<String> parameterNames = request.getParameterNames();
+	%>
+	<h2>request.getParameterNames()</h2>
+	<%while(parameterNames.hasMoreElements()){
+		String parameterName = parameterNames.nextElement();
+	%>
+		<%=parameterName %><br>
 	<%} %>
 </body>
 </html>
