@@ -75,8 +75,16 @@
 </div>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				
-<form class="form-horizontal" id="frm" role="form" action="${cp }/userForm" method="post">
+<form class="form-horizontal" id="frm" role="form" action="${cp }/userForm" method="post" enctype="multipart/form-data">
 
+					<div class="form-group">
+						<label for="userId" class="col-sm-2 control-label">사용자 사진</label>
+						<div class="col-sm-10">
+							<input type="file" class="form-control" id="picture" name="picture"
+								placeholder="사용자 사진">
+						</div>
+					</div>
+					
 					<div class="form-group">
 						<label for="userId" class="col-sm-2 control-label">사용자 아이디</label>
 						<div class="col-sm-10">

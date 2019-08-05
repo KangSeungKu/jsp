@@ -17,6 +17,9 @@ public class User {
 	private String addr1;			// 주소1
 	private String addr2;			// 주소2
 	private String zipcode;			// 우편번호
+	private String filename;		// 파일명(사용자 업로드 파일명)
+	private String realfilename;	// 물리 파일명
+	private String realfilename2;	// 물리 파일명
 	//private String reg_dt_fmt = "2019-09-20";	
 	
 	public User() {
@@ -24,7 +27,7 @@ public class User {
 	}
 	
 	public User(String userId, String pass, String userNm, String alias, Date reg_dt, String addr1, String addr2,
-			String zipcode) {
+			String zipcode, String filename, String realfilename) {
 		this.userId = userId;
 		this.pass = pass;
 		this.userNm = userNm;
@@ -33,6 +36,8 @@ public class User {
 		this.addr1 = addr1;
 		this.addr2 = addr2;
 		this.zipcode = zipcode;
+		this.filename = filename;
+		this.realfilename = realfilename;
 	}
 
 	public User(String userNm) {
@@ -115,9 +120,34 @@ public class User {
 		return false;
 	}
 
+	public String getFilename() {
+		return filename;
+	}
+
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+
+	public String getRealfilename() {
+		return realfilename;
+	}
+
+	public void setRealfilename(String realfilename) {
+		this.realfilename = realfilename;
+	}
+	
+	public String getRealfilename2() {
+		return realfilename2;
+	}
+
+	public void setRealfilename2(String realfilename2) {
+		this.realfilename2 = realfilename2;
+	}
+
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", pass=" + pass + ", userNm=" + userNm + ", alias=" + alias + ", reg_dt="
-				+ reg_dt + ", addr1=" + addr1 + ", addr2=" + addr2 + ", zipcode=" + zipcode + "]";
+				+ reg_dt + ", addr1=" + addr1 + ", addr2=" + addr2 + ", zipcode=" + zipcode + ", filename=" + filename
+				+ ", realfilename=" + realfilename + ", realfilename2=" + realfilename2 + "]";
 	}
 }
