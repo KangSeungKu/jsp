@@ -83,7 +83,7 @@ public class UserDaoTest {
 		
 		/***Then***/
 		assertEquals("brown", userVo.getUserId());
-		assertEquals("brown1234", userVo.getPass());
+//		assertEquals("brown1234", userVo.getPass());
 	}
 	
 	@Test
@@ -142,14 +142,14 @@ public class UserDaoTest {
 	}
 	
 	/**
-	* Method : insertUser
+	* Method : insertUserTest
 	* 작성자 : PC-16
 	* 변경이력 :
 	* Method 설명 : 사용자 등록 테스트
 	 * @throws ParseException 
 	*/
 	@Test
-	public void insertUser() throws ParseException {
+	public void insertUserTest() throws ParseException {
 		/***Given***/
 		User user = new User();
 		//'brownTest', '브라운테스트', 'brownTest1234', '2019-08-08', 
@@ -162,6 +162,8 @@ public class UserDaoTest {
 		user.setAddr1("대전광역시 중구 중앙로 76");
 		user.setAddr2("영민빌딩 2층 DDIT");
 		user.setZipcode("34940");
+		user.setFilename("noImage");
+		user.setRealfilename("noImage");
 		
 		/***When***/
 		int insertCnt = userDao.insertUser(sqlSession, user);
@@ -169,5 +171,37 @@ public class UserDaoTest {
 
 		/***Then***/
 		assertEquals(1, insertCnt);
+	}
+	
+	/**
+	* Method : updateUser
+	* 작성자 : PC-16
+	* 변경이력 :
+	* Method 설명 : 사용자 수정 테스트
+	 * @throws ParseException 
+	*/
+	@Test
+	public void updateUserTest() throws ParseException {
+		/***Given***/
+		User user = new User();
+		//'brownTest', '브라운테스트', 'brownTest1234', '2019-08-08', 
+		//'곰테스트', '대전광역시 중구 중앙로 76', '영민빌딩 2층 DDIT', '34940'
+		user.setUserId(userId);
+		user.setUserNm("브라운수정");
+		user.setPass("brownUpdt1234");
+		user.setReg_dt(new SimpleDateFormat("yyyy-MM-dd").parse("2019-08-27"));
+		user.setAlias("곰수정");
+		user.setAddr1("대전광역시 중구 수정로 76");
+		user.setAddr2("영민빌딩 2층 DDIT 수정");
+		user.setZipcode("34940");
+		user.setFilename("update.png");
+		user.setRealfilename("update_0123.png");
+		
+		/***When***/
+		int updateCnt = userDao.updateUser(sqlSession, user);
+		sqlSession.commit();
+
+		/***Then***/
+		assertEquals(0, updateCnt);
 	}
 }

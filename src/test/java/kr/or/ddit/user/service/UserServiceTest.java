@@ -10,6 +10,8 @@ import java.util.Map;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import kr.or.ddit.common.model.Page;
 import kr.or.ddit.user.model.User;
@@ -19,6 +21,8 @@ import kr.or.ddit.util.MybatisUtil;
 
 public class UserServiceTest {
 	
+	private static final Logger logger = LoggerFactory.getLogger(UserServiceTest.class);
+	
 	private IUserService userService;
 	private String userId = "brownTest";
 
@@ -27,6 +31,7 @@ public class UserServiceTest {
 		userService = new UserService();
 		
 		userService.deleteUser(userId);
+		logger.debug("Userservice - setup");
 	}
 	
 	/**
@@ -63,7 +68,7 @@ public class UserServiceTest {
 		
 		/***Then***/
 		assertEquals("brown", userVo.getUserId());
-		assertEquals("brown1234", userVo.getPass());
+		//assertEquals("brown1234", userVo.getPass());
 	}
 	
 	@Test
@@ -135,5 +140,31 @@ public class UserServiceTest {
 
 		/***Then***/
 		assertEquals(1, insertCnt);
+	}
+	
+	@Test
+	public void updateUserTest() throws ParseException {
+		/***Given***/
+		User user = new User();
+		//'brownTest', '브라운테스트', 'brownTest1234', '2019-08-08', 
+		//'곰테스트', '대전광역시 중구 중앙로 76', '영민빌딩 2층 DDIT', '34940'
+		user.setUserId(userId);
+		user.setUserNm("브라운수정");
+		user.setPass("brownUpdt1234");
+		user.setReg_dt(new SimpleDateFormat("yyyy-MM-dd").parse("2019-08-27"));
+		user.setAlias("곰수정");
+		user.setAddr1("대전광역시 중구 수정로 76");
+		user.setAddr2("영민빌딩 2층 DDIT 수정");
+		user.setZipcode("34940");
+		user.setFilename("update.png");
+		user.setRealfilename("update_0123.png");
+
+		/***When***/
+		userService.insertUser(user);
+		int updateCnt = userService.updateUser(user);
+		logger.debug("Userservice - updateUser");
+
+		/***Then***/
+		assertEquals(1, updateCnt);
 	}
 }

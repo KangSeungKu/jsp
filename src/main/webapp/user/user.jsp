@@ -17,10 +17,23 @@
 
 <title>Jsp-basicLib</title>
 <%@include file="/commonJsp/basicLib.jsp" %>
-
+<script>
+//문서 로딩이 완료되고 나서
+$(document).ready(function(){
+	
+	// 사용자 정보 클릭시 이벤트 핸들러
+	$("#modi").on("click", function(){
+		
+		$("#frm").submit();
+	});
+});
+</script>
 </head>
 
 <body>
+<form id="frm" action="${cp }/userModify" method="get">
+	<input type="hidden" id="userId" name="userId" value="${user.userId }"/>
+</form>
 
 <!-- header -->
 <%@include file="/commonJsp/header.jsp" %>
@@ -79,7 +92,7 @@
 
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-							<button type="submit" class="btn btn-default">사용자 수정</button>
+							<button id="modi" type="button" class="btn btn-default">사용자 수정</button>
 						</div>
 					</div>
 				</form>

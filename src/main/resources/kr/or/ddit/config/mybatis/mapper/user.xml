@@ -36,11 +36,16 @@
 	<!-- 사용자 등록 -->
 	<insert id="insertUser" parameterType="userVo">
 		insert into users (userId, userNm, pass, reg_dt, alias, addr1, addr2, zipcode, filename, realfilename)
-		values (#{userId}, #{userNm}, #{pass}, #{reg_dt}, #{alias}, #{addr1}, #{addr2}, #{zipcode}, #{filename}, #{realfilename})
+		values (#{userId}, #{userNm}, #{pass}, #{reg_dt}, #{alias}, #{addr1}, #{addr2}, #{zipcode}, #{filename, jdbcType=VARCHAR}, #{realfilename, jdbcType=VARCHAR})
 	</insert>
 	
 	<!-- 사용자 삭제 -->
 	<delete id="deleteUser" parameterType="String">
 		delete users where userid=#{userId}
 	</delete>
+	
+	<update id="updateUser" parameterType="userVo">
+		update users set userNm=#{userNm}, pass=#{pass}, reg_dt=#{reg_dt}, alias=#{alias}, filename=#{filename, jdbcType=VARCHAR}, realfilename=#{realfilename, jdbcType=VARCHAR}
+		where userid=#{userId}
+	</update>
 </mapper>
