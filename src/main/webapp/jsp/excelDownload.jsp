@@ -1,4 +1,4 @@
-<%@page import="kr.or.ddit.user.model.UserVo"%>
+<%@page import="kr.or.ddit.user.model.User"%>
 <%@page import="java.util.List"%>
 <%@page import="kr.or.ddit.user.repository.UserDao"%>
 <%@page import="kr.or.ddit.user.repository.IUserDao"%>
@@ -14,14 +14,16 @@
 <%
 	response.setHeader("Content-Disposition", "attachment; filename=line.xls");
 	IUserDao userDao = new UserDao();
-	List<UserVo> userList = userDao.getUserList();
+	List<User> userList = userDao.getUserList();
 %>
 <table>
 	<tr>
 		<th>이름</th>
 		<th>나이</th>
 	</tr>
-	<%for(UserVo item : userList){ %>
+	<%
+		for(User item : userList){
+	%>
 		<tr>
 			<td><%=item.getUserNm() %></td>			<td>00세</td>
 		</tr>
