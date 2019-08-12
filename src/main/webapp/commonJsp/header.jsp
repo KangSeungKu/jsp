@@ -18,12 +18,7 @@
 				<li><a href="#">Settings</a></li>
 				<li><a href="#">Profile</a></li>
 				<li><a href="#">Help</a></li>
-				<%
-					User userVo = (User) session.getAttribute("S_USERVO");
-							String userName = "";
-							userName = userVo == null ? "" : userVo.getUserNm();
-				%>
-				<li><a href="#"><%=userName %></a></li>
+				<li><a href="#">${S_USERVO.userNm}</a></li>
 			</ul>
 			<form class="navbar-form navbar-right">
 				<input type="text" class="form-control" placeholder="Search...">
