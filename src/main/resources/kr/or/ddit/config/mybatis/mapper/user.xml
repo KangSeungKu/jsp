@@ -13,4 +13,8 @@
 		from users
 		where userId = #{userId}
 	</select>
+	
+	<select id="getUserListOnlyHalf" resultType="userVo">
+		select * from users where rownum &lt;= 50
+	</select>
 </mapper>
