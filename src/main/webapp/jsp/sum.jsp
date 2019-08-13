@@ -9,7 +9,7 @@
 <body>
 	<h2>두 숫자 사이의 모든 숫자의 합을 구하는 JSP</h2>
 	<h3>- 두개의 숫자를 입력하시오.</h3>
-	<form action="<%=request.getContextPath() %>/jsp/sumResult.jsp" method="get">
+	<form action="${pageContext.request.contextPath }/jsp/sumResult.jsp" method="get">
 		첫번째 숫자 : <input type="text" name="num1" value="1"><br>
 		두번째 숫자 : <input type="text" name="num2" value="10"><br>
 		<br>
