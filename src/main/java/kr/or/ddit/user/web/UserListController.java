@@ -28,6 +28,6 @@ public class UserListController extends HttpServlet {
 		
 		request.setAttribute("userList", userList);
 		
-		request.getRequestDispatcher("/user/userList.jsp").forward(request, response);
+		request.getRequestDispatcher("/user/prodList.jsp").forward(request, response);
 	}
 }

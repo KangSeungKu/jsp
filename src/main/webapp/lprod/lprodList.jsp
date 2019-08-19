@@ -15,9 +15,24 @@
 
 <title>Jsp-basicLib</title>
 <%@include file="/commonJsp/basicLib.jsp" %>
+
+<script>
+	$(document).ready(function(){
+		$(".lprodTr").on("click", function(){
+			console.log($(this).children().eq(1).text());
+			$("#lprodId").val($(this).children().eq(1).text());
+			
+			$("#frm").submit();
+		});
+	})
+</script>
+
 </head>
 
 <body>
+<form id="frm" action="${cp }/prodList" method="get">
+	<input type="hidden" id="lprodId" name="lprodId"/>
+</form>
 
 <!-- header -->
 <%@include file="/commonJsp/header.jsp" %>
@@ -42,7 +57,7 @@
 				
 				<%-- for(User user : userList --%>
 				<c:forEach items="${lprodList }" var="lprod">
-					<tr>
+					<tr class="lprodTr">
 						<td>${lprod.lprod_id }</td>
 						<td>${lprod.lprod_gu }</td>
 						<td>${lprod.lprod_nm }</td>
