@@ -8,7 +8,7 @@
 </head>
 <body>
 <h2>start값 ~ end값까지 더하기</h2>
-<form action="${pageContext.request.contextPath }/sumCalculation" method="post">
+<form action="${cp }/sumCalculation" method="post">
 start : <input type="text" name="startParam" value="1" required/><br>
 end : <input type="text" name="endParam" value="10" required/><br>
 <input type="submit" value="결과">

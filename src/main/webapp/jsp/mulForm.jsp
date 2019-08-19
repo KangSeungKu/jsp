@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h2>두 개의 숫자를 입력받아 곱 구하기</h2>
-	<form action="${pageContext.request.contextPath }/jsp/mul.jsp" method="get">
+	<form action="${cp }/jsp/mul.jsp" method="get">
 		첫 번째 숫자 : <input type="text" name="number" value="5"/><br>
 		두 번째 숫자 : <input type="text" name="number2" value="10"/><br>
 		<br>
