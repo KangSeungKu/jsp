@@ -15,6 +15,10 @@
 	td {
 		padding: 10px;
 	}
+	
+	td:hover {
+		background: #dedede;
+	}
 </style>
 </head>
 <body>
@@ -26,13 +30,6 @@
 				</c:forEach>
 			</tr>
 		</c:forEach>
-		<%-- <%for(int i = 2; i <= 9; i++){%>
-			<tr>
-				<%for(int j = 1; j <= 9; j++){%>
-					<td><%=i%> X <%=j%> = <%=i*j%></td>
-				<%}%>
-			</tr>
-			<%}%> --%>
 	</table>
 </body>
 </html>
