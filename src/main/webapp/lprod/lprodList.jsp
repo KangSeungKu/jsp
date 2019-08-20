@@ -19,8 +19,10 @@
 <script>
 	$(document).ready(function(){
 		$(".lprodTr").on("click", function(){
-			console.log($(this).children().eq(1).text());
-			$("#lprodId").val($(this).children().eq(1).text());
+			//console.log($(this).children().eq(1).text());
+			var dataValue = $(this).data("lprodgu");
+			//$("#lprodId").val($(this).children().eq(1).text());
+			$("#lprodId").val(dataValue);
 			
 			$("#frm").submit();
 		});
@@ -57,7 +59,7 @@
 				
 				<%-- for(User user : userList --%>
 				<c:forEach items="${lprodList }" var="lprod">
-					<tr class="lprodTr">
+					<tr class="lprodTr" data-lprodgu="${lprod.lprod_gu }">
 						<td>${lprod.lprod_id }</td>
 						<td>${lprod.lprod_gu }</td>
 						<td>${lprod.lprod_nm }</td>
