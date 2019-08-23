@@ -32,7 +32,7 @@ public class UserController extends HttpServlet {
 	public void init() throws ServletException {
 		userService = new UserService();
 	}
-
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String userId = request.getParameter("userId");
@@ -45,4 +45,10 @@ public class UserController extends HttpServlet {
 		
 		request.getRequestDispatcher("/user/user.jsp").forward(request, response);
 	}
+	
+	@Override
+		protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+			logger.debug("userController.doPost");
+			doGet(req, resp);
+		}
 }

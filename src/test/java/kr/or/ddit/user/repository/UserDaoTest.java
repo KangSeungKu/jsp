@@ -21,8 +21,9 @@ public class UserDaoTest {
 	
 	private static final Logger logger = LoggerFactory.getLogger(UserDaoTest.class);
 	
-	IUserDao userDao;
-	SqlSession sqlSession;
+	private IUserDao userDao;
+	private SqlSession sqlSession;
+	private String userId = "brownTest";
 	
 	// junit 테스트 메소드 실행 순서
 	// @Before -> @Test -> @After
@@ -37,6 +38,8 @@ public class UserDaoTest {
 		logger.debug("before");
 		userDao = new UserDao();
 		sqlSession = MybatisUtil.getSession();
+		
+		userDao.deleteUser(sqlSession, userId);
 	}
 	
 	// 테스트에 공통적으로 사용한 자원을 해제
@@ -151,7 +154,7 @@ public class UserDaoTest {
 		User user = new User();
 		//'brownTest', '브라운테스트', 'brownTest1234', '2019-08-08', 
 		//'곰테스트', '대전광역시 중구 중앙로 76', '영민빌딩 2층 DDIT', '34940'
-		user.setUserId("brownTest");
+		user.setUserId(userId);
 		user.setUserNm("브라운테스트");
 		user.setPass("brownTest1234");
 		user.setReg_dt(new SimpleDateFormat("yyyy-MM-dd").parse("2019-08-08"));
@@ -159,9 +162,10 @@ public class UserDaoTest {
 		user.setAddr1("대전광역시 중구 중앙로 76");
 		user.setAddr2("영민빌딩 2층 DDIT");
 		user.setZipcode("34940");
-
+		
 		/***When***/
 		int insertCnt = userDao.insertUser(sqlSession, user);
+		sqlSession.commit();
 
 		/***Then***/
 		assertEquals(1, insertCnt);

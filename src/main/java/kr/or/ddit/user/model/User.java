@@ -23,6 +23,18 @@ public class User {
 		
 	}
 	
+	public User(String userId, String pass, String userNm, String alias, Date reg_dt, String addr1, String addr2,
+			String zipcode) {
+		this.userId = userId;
+		this.pass = pass;
+		this.userNm = userNm;
+		this.alias = alias;
+		this.reg_dt = reg_dt;
+		this.addr1 = addr1;
+		this.addr2 = addr2;
+		this.zipcode = zipcode;
+	}
+
 	public User(String userNm) {
 		this.userNm = userNm;
 	}
