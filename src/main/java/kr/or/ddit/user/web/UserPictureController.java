@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import kr.or.ddit.user.model.User;
 import kr.or.ddit.user.service.IUserService;
 import kr.or.ddit.user.service.UserService;
@@ -30,8 +33,13 @@ public class UserPictureController extends HttpServlet {
 		User user = userService.getUser(userId);
 		
 		ServletOutputStream sos = response.getOutputStream();
+		File picture = null;
+		if(user.getRealfilename() != null && !user.getRealfilename().equals("")) {
+			picture = new File(user.getRealfilename());
+		}else {
+			picture = new File(getServletContext().getRealPath("/upload/noImage.png"));
+		}
 		
-		File picture = new File(user.getRealfilename());
 		FileInputStream fis = new FileInputStream(picture);
 		
 		byte[] buff = new byte[512];

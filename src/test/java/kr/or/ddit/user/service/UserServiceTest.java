@@ -68,7 +68,7 @@ public class UserServiceTest {
 		
 		/***Then***/
 		assertEquals("brown", userVo.getUserId());
-		//assertEquals("brown1234", userVo.getPass());
+		//assertEquals("c6347b73d5b1f7c77f8be828ee3e871c819578f23779c7d5e082ae2b36a44", userVo.getPass());
 	}
 	
 	@Test
